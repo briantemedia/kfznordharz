@@ -9,6 +9,7 @@
 html, body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 body {
   font-family: Arial, sans-serif;
@@ -26,46 +27,27 @@ a:hover {
 }
 
 /* HEADER & NAVIGATION */
-
-/* Header startet transparent, überlappt das Hero-Bild */
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 999;
-  background: transparent; /* Start: transparent */
-  transition: background 0.3s ease;
-  padding: 10px 0;
-}
-
-/* Wenn gescrollt, wird .scrolled per JS hinzugefügt */
-.header.scrolled {
   background: rgba(0, 0, 0, 0.5);
 }
-
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1rem;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
 }
-
-/* Logo-Bild-Klasse */
-.logo-image {
-  height: 100px;      
-  width: auto;
-  object-fit: contain;
-  margin-right: 20px;
+.header__info {
+  display: flex;
+  align-items: center;
 }
-
-/* main hat kein zusätzliches Padding, da der Hero direkt unter dem Header beginnt */
-main {
-  padding-top: 0; 
-}
-
 .header__logo {
   font-size: 1.5rem;
   font-weight: bold;
@@ -98,7 +80,8 @@ main {
 .header__nav-list {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
+  margin: 20px 0;
 }
 .header__nav-item a {
   font-size: 1rem;
@@ -124,7 +107,7 @@ main {
   background-color: #c0392b;
 }
 
-/* RESPONSIVE NAVIGATION */
+/* RESPONSIVE NAVIGATION (Mobile-Ansicht) */
 @media (max-width: 768px) {
   .hamburger {
     display: flex;
@@ -141,19 +124,18 @@ main {
   }
   .header__nav-list {
     flex-direction: column;
-    padding: 20px;
-  }
-  .header__nav-item {
-    margin: 10px 0;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
   }
   #menu-toggle:checked ~ .nav-links {
     max-height: 300px;
   }
   .cta-button {
-    display: block;
-    margin: 10px auto 0 auto;
-    width: 80%;
-    text-align: center;
+    display: inline-block;
+    margin: 0 10px;
+    width: auto;
+    vertical-align: middle;
   }
 }
 
@@ -180,10 +162,10 @@ main {
   position: relative;
   z-index: 1;
   color: #fff;
-  margin-right: 300px;
-  max-width: 600px;
+  margin: 0 auto;
+  max-width: 90%;
+  padding: 0 10px;
   text-align: left;
-  margin-top: 120px; /* Damit der Text nicht vom Header verdeckt wird */
 }
 .hero__content h1 {
   font-size: 48px;
@@ -221,6 +203,7 @@ main {
   justify-content: space-around;
   align-items: center;
   gap: 20px;
+  flex-direction: row;
 }
 .usp-item {
   flex: 1;
@@ -240,15 +223,6 @@ main {
 .usp-item p {
   font-size: 14px;
   color: #ddd;
-}
-
-/* Hier wird sichergestellt, dass die USP-Elemente auch auf kleinen Bildschirmen in einer Reihe bleiben */
-@media (max-width: 768px) {
-  .usp-banner__container {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
 }
 
 /* PRODUKTE */
@@ -528,28 +502,6 @@ main {
 @media (max-width: 768px) {
   .footer-container {
     text-align: center;
-  }
-}
-
-/* RESPONSIVE FOOTER & HERO */
-@media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-  }
-  .header__nav-list {
-    flex-direction: column;
-    margin-top: 10px;
-  }
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  .hero__content {
-    margin-right: 20px;
-    max-width: 300px;
-    margin-top: 80px;
-  }
-  .testimonial-card {
-    flex: 0 0 100%;
+    padding: 0 10px;
   }
 }
